@@ -8,6 +8,7 @@ mkdir app/armeabi-v7a
 mkdir app/x86
 mkdir app/x86_64
 
+AJARDIR=$ANDROID_SDK_ROOT/platforms/android-36-ext19
 BASEDIR=$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64
 RES_DIR=$BASEDIR/lib/clang/18
 SYSROOT=$BASEDIR/sysroot
@@ -18,3 +19,9 @@ $BASEDIR/bin/aarch64-linux-android32-clang    $FLAGS -o app/arm64-v8a/libhello.s
 $BASEDIR/bin/armv7a-linux-androideabi32-clang $FLAGS -o app/armeabi-v7a/libhello.so --target=armv7a-linux-androideabi32
 $BASEDIR/bin/i686-linux-android32-clang       $FLAGS -o app/x86/libhello.so         --target=i686-linux-android32
 $BASEDIR/bin/x86_64-linux-android32-clang     $FLAGS -o app/x86_64/libhello.so      --target=x86_64-linux-android32
+
+AAPT2=$ANDROID_SDK_ROOT/build-tools/37.0.0/aapt2
+$AAPT2 compile res/values/strings.xml -o .
+$AAPT2 link values_strings.arsc.flat -o app.res.apk --manifest AndroidManifest.xml -I $AJARDIR/android.jar
+
+find .
