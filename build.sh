@@ -25,11 +25,15 @@ $TOOLDIR/aapt2 compile res/values/strings.xml -o .
 $TOOLDIR/aapt2 link values_strings.arsc.flat -o app.res.apk --manifest AndroidManifest.xml -I $AJARDIR/android.jar
 
 cd app
-unzip -v ../app.res.apk
+unzip ../app.res.apk
 zip -v -r ../app.unaligned.apk .
 cd -
 
 $TOOLDIR/zipalign -p -f -v 4 app.unaligned.apk app.apk
 
-file app.apk
+# Obviously you should use real passwords, dnames, etc
+keytool -genkeypair -keystore keystore.jks -alias androidkey -validity 10000 -keyalg RSA -keysize 2048 -storepass android -keypass android -dname CN=CA
+$TOOLDIR/apksigner sign --in app.apk -ks keystore.jks --ks-key-alias androidkey --ks-pass pass:android --key-pass pass:android
+
 unzip -t app.apk
+
