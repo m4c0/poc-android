@@ -24,4 +24,9 @@ AAPT2=$ANDROID_SDK_ROOT/build-tools/37.0.0/aapt2
 $AAPT2 compile res/values/strings.xml -o .
 $AAPT2 link values_strings.arsc.flat -o app.res.apk --manifest AndroidManifest.xml -I $AJARDIR/android.jar
 
-find .
+cd app
+unzip -v ../app.res.apk
+zip -v -r ../app.unaligned.apk .
+cd -
+
+find app
