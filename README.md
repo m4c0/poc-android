@@ -36,3 +36,10 @@ These dynamic libraries should be added to the APK before aligning/signing. The
 easiest way I know is unzipping the APK created by `aapt2` then re-zipping with
 those libraries included. Then align/sign and done.
 
+## Future ideas
+
+* Download what's needed instead of using SDK's classical paths. [This
+  page][1] seems to contains hotlinks to what we need
+
+[1]: https://androidsdkmanager.azurewebsites.net/tools
+

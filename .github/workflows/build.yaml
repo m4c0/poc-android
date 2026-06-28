@@ -1,8 +1,13 @@
 name: Build
 on: [push]
 jobs:
-  build:
+  linux-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - run: ./build.sh
+  windows-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: cmd /c build.bat
