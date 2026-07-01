@@ -32,6 +32,7 @@ mv AndroidManifest.xml manifest/
 zip -v -r ../base.zip *
 cd ..
 
+curl -L -o bundletool.jar https://github.com/google/bundletool/releases/download/1.18.3/bundletool-all-1.18.3.jar
 java -jar bundletool.jar build-bundle --modules=base.zip --output=app.aab
 
 # Obviously you should use real passwords, dnames, etc
