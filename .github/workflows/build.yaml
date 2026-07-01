@@ -1,13 +1,13 @@
 name: Build
 on: [push]
 jobs:
-  linux-build:
+  linux-build-apk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - run: ./build.sh
-  windows-build:
+      - run: ./build-apk.sh
+  windows-build-apk:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v6
-      - run: cmd /c build.bat
+      - run: cmd /c build-apk.bat
