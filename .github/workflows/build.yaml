@@ -1,6 +1,11 @@
 name: Build
 on: [push]
 jobs:
+  linux-build-aab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: ./build-aab.sh
   linux-build-apk:
     runs-on: ubuntu-latest
     steps:
