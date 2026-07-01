@@ -18,10 +18,10 @@ TOOLDIR=$ANDROID_SDK_ROOT/build-tools/37.0.0
 
 FLAGS="-shared main.c -Wl,-Bsymbolic -fuse-ld=lld -Wl,--no-undefined -llog -resource-dir $RES_DIR --sysroot $SYSROOT"
 
-$BASEDIR/bin/aarch64-linux-android32-clang    $FLAGS -o app/arm64-v8a/libhello.so   --target=arm64-v8a-linux-android32
-$BASEDIR/bin/armv7a-linux-androideabi32-clang $FLAGS -o app/armeabi-v7a/libhello.so --target=armv7a-linux-androideabi32
-$BASEDIR/bin/i686-linux-android32-clang       $FLAGS -o app/x86/libhello.so         --target=i686-linux-android32
-$BASEDIR/bin/x86_64-linux-android32-clang     $FLAGS -o app/x86_64/libhello.so      --target=x86_64-linux-android32
+$BASEDIR/bin/aarch64-linux-android32-clang    $FLAGS -o app/lib/arm64-v8a/libhello.so   --target=arm64-v8a-linux-android32
+$BASEDIR/bin/armv7a-linux-androideabi32-clang $FLAGS -o app/lib/armeabi-v7a/libhello.so --target=armv7a-linux-androideabi32
+$BASEDIR/bin/i686-linux-android32-clang       $FLAGS -o app/lib/x86/libhello.so         --target=i686-linux-android32
+$BASEDIR/bin/x86_64-linux-android32-clang     $FLAGS -o app/lib/x86_64/libhello.so      --target=x86_64-linux-android32
 
 $TOOLDIR/aapt2 compile res/values/strings.xml -o .
 $TOOLDIR/aapt2 link --proto-format values_strings.arsc.flat -o res.zip --manifest AndroidManifest.xml -I $AJARDIR/android.jar
